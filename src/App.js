@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import "./App.css";
 import { Container, Table } from "reactstrap";
 import ReactStickies from "react-stickies";
-import Card from "react-bootstrap/Card";
 import { Alert, Button } from 'reactstrap';
 import Navigation from "./components/Navigation";
 
