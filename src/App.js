@@ -3,8 +3,9 @@ import "./App.css";
 import { Container, Table } from "reactstrap";
 import ReactStickies from "react-stickies";
 import Card from "react-bootstrap/Card";
+import { Alert, Button } from 'reactstrap';
 import Navigation from "./components/Navigation";
-import { Alert } from 'reactstrap';
+
 
 class App extends Component {
  constructor(props) {
@@ -30,7 +31,9 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Navigation />
+        <Navigation>
+          
+        </Navigation>
         <Container>
           <Table striped>
             <thead>
@@ -66,199 +69,87 @@ class App extends Component {
                 <th scope="row"><Alert color="warning">Readify</Alert></th>
                 <td>
                   <div className="each-col">
-                    <Card>
-                      <Card.Body>
-                        <Card.Title>Card title</Card.Title>
-                        <Card.Text>
-                          <small className="text-muted">
-                            Last updated 3 mins ago
-                          </small>
-                        </Card.Text>
-                      </Card.Body>
-                    </Card>
+                    <Button color="secondary">EVENT TITLE</Button>
+                    <Button color="secondary">EVENT TITLE</Button>
                   </div>
                 </td>
                 <td>
                   <div className="each-col">
-                  <Card>
-                      <Card.Body>
-                        <Card.Title>Card title</Card.Title>
-                        <Card.Text>
-                          <small className="text-muted">
-                            Last updated 3 mins ago
-                          </small>
-                        </Card.Text>
-                      </Card.Body>
-                    </Card>
+                  <Button color="secondary">EVENT TITLE</Button>
+                    <Button color="secondary">EVENT TITLE</Button>
                   </div>
                 </td>
                 <td>
                   <div className="each-col">
-                  <Card>
-                      <Card.Body>
-                        <Card.Title>Card title</Card.Title>
-                        <Card.Text>
-                          <small className="text-muted">
-                            Last updated 3 mins ago
-                          </small>
-                        </Card.Text>
-                      </Card.Body>
-                    </Card>
+                  <Button color="secondary">EVENT TITLE</Button>
+                  <Button color="secondary">EVENT TITLE</Button>
                   </div>
                 </td>
                 <td>
                   <div className="each-col">
-                  <Card>
-                      <Card.Body>
-                        <Card.Title>Card title</Card.Title>
-                        <Card.Text>
-                          <small className="text-muted">
-                            Last updated 3 mins ago
-                          </small>
-                        </Card.Text>
-                      </Card.Body>
-                    </Card>
+                  <Button color="secondary">EVENT TITLE</Button>
+                    <Button color="secondary">EVENT TITLE</Button>
                   </div>
                 </td>
                 <td>
                   <div className="each-col">
-                  <Card>
-                      <Card.Body>
-                        <Card.Title>Card title</Card.Title>
-                        <Card.Text>
-                          <small className="text-muted">
-                            Last updated 3 mins ago
-                          </small>
-                        </Card.Text>
-                      </Card.Body>
-                    </Card>
+                  <Button color="secondary">EVENT TITLE</Button>
+                    <Button color="secondary">EVENT TITLE</Button>
                   </div>
                 </td>
                 <td>
                   <div className="each-col">
-                  <Card>
-                      <Card.Body>
-                        <Card.Title>Card title</Card.Title>
-                        <Card.Text>
-                          <small className="text-muted">
-                            Last updated 3 mins ago
-                          </small>
-                        </Card.Text>
-                      </Card.Body>
-                    </Card>
+                  <Button color="secondary">EVENT TITLE</Button>
+                    <Button color="secondary">EVENT TITLE</Button>
                   </div>
                 </td>
                 <td>
                   <div className="each-col">
-                  <Card>
-                      <Card.Body>
-                        <Card.Title>Card title</Card.Title>
-                        <Card.Text>
-                          <small className="text-muted">
-                            Last updated 3 mins ago
-                          </small>
-                        </Card.Text>
-                      </Card.Body>
-                    </Card>
+                  <Button color="secondary">EVENT TITLE</Button>
+                    <Button color="secondary">EVENT TITLE</Button>
                   </div>
                 </td>
                 <td> </td>
                 <td>
                   <div className="each-col">
-                  <Card>
-                      <Card.Body>
-                        <Card.Title>Card title</Card.Title>
-                        <Card.Text>
-                          <small className="text-muted">
-                            Last updated 3 mins ago
-                          </small>
-                        </Card.Text>
-                      </Card.Body>
-                    </Card>
+                  <Button color="secondary">EVENT TITLE</Button>
+                    <Button color="secondary">EVENT TITLE</Button>
                   </div>
                 </td>
                 <td>
                   <div className="each-col">
-                  <Card>
-                      <Card.Body>
-                        <Card.Title>Card title</Card.Title>
-                        <Card.Text>
-                          <small className="text-muted">
-                            Last updated 3 mins ago
-                          </small>
-                        </Card.Text>
-                      </Card.Body>
-                    </Card>
+                  <Button color="secondary">EVENT TITLE</Button>
+                    <Button color="secondary">EVENT TITLE</Button>
                   </div>
                 </td>
                 <td>
                   <div className="each-col">
-                  <Card>
-                      <Card.Body>
-                        <Card.Title>Card title</Card.Title>
-                        <Card.Text>
-                          <small className="text-muted">
-                            Last updated 3 mins ago
-                          </small>
-                        </Card.Text>
-                      </Card.Body>
-                    </Card>
+                  <Button color="secondary">EVENT TITLE</Button>
+                    <Button color="secondary">EVENT TITLE</Button>
                   </div>
                 </td>
                 <td>
                   <div className="each-col">
-                  <Card>
-                      <Card.Body>
-                        <Card.Title>Card title</Card.Title>
-                        <Card.Text>
-                          <small className="text-muted">
-                            Last updated 3 mins ago
-                          </small>
-                        </Card.Text>
-                      </Card.Body>
-                    </Card>
+                  <Button color="secondary">EVENT TITLE</Button>
+                    <Button color="secondary">EVENT TITLE</Button>
                   </div>
                 </td>
                 <td>
                   <div className="each-col">
-                  <Card>
-                      <Card.Body>
-                        <Card.Title>Card title</Card.Title>
-                        <Card.Text>
-                          <small className="text-muted">
-                            Last updated 3 mins ago
-                          </small>
-                        </Card.Text>
-                      </Card.Body>
-                    </Card>
+                  <Button color="secondary">EVENT TITLE</Button>
+                    <Button color="secondary">EVENT TITLE</Button>
                   </div>
                 </td>
                 <td>
                   <div className="each-col">
-                  <Card>
-                      <Card.Body>
-                        <Card.Title>Card title</Card.Title>
-                        <Card.Text>
-                          <small className="text-muted">
-                            Last updated 3 mins ago
-                          </small>
-                        </Card.Text>
-                      </Card.Body>
-                    </Card>
+                  <Button color="secondary">EVENT TITLE</Button>
+                    <Button color="secondary">EVENT TITLE</Button>
                   </div>
                 </td>
                 <td>
                   <div className="each-col">
-                  <Card>
-                      <Card.Body>
-                        <Card.Title>Card title</Card.Title>
-                        <Card.Text>
-                          <small className="text-muted">
-                            Last updated 3 mins ago
-                          </small>
-                        </Card.Text>
-                      </Card.Body>
-                    </Card>
+                  <Button color="secondary">EVENT TITLE</Button>
+                    <Button color="secondary">EVENT TITLE</Button>
                   </div>
                 </td>
               </tr>
@@ -266,199 +157,87 @@ class App extends Component {
               <th scope="row"><Alert color="warning">Elsewhere</Alert></th>
                 <td>
                   <div className="each-col">
-                  <Card>
-                      <Card.Body>
-                        <Card.Title>Card title</Card.Title>
-                        <Card.Text>
-                          <small className="text-muted">
-                            Last updated 3 mins ago
-                          </small>
-                        </Card.Text>
-                      </Card.Body>
-                    </Card>
+                  <Button color="secondary">EVENT TITLE</Button>
+                    <Button color="secondary">EVENT TITLE</Button>
                   </div>
                 </td>
                 <td>
                   <div className="each-col">
-                  <Card>
-                      <Card.Body>
-                        <Card.Title>Card title</Card.Title>
-                        <Card.Text>
-                          <small className="text-muted">
-                            Last updated 3 mins ago
-                          </small>
-                        </Card.Text>
-                      </Card.Body>
-                    </Card>
+                  <Button color="secondary">EVENT TITLE</Button>
+                    <Button color="secondary">EVENT TITLE</Button>
                   </div>
                 </td>
                 <td>
                   <div className="each-col">
-                  <Card>
-                      <Card.Body>
-                        <Card.Title>Card title</Card.Title>
-                        <Card.Text>
-                          <small className="text-muted">
-                            Last updated 3 mins ago
-                          </small>
-                        </Card.Text>
-                      </Card.Body>
-                    </Card>
+                  <Button color="secondary">EVENT TITLE</Button>
+                    <Button color="secondary">EVENT TITLE</Button>
                   </div>
                 </td>
                 <td>
                   <div className="each-col">
-                  <Card>
-                      <Card.Body>
-                        <Card.Title>Card title</Card.Title>
-                        <Card.Text>
-                          <small className="text-muted">
-                            Last updated 3 mins ago
-                          </small>
-                        </Card.Text>
-                      </Card.Body>
-                    </Card>
+                  <Button color="secondary">EVENT TITLE</Button>
+                    <Button color="secondary">EVENT TITLE</Button>
                   </div>
                 </td>
                 <td>
                   <div className="each-col">
-                  <Card>
-                      <Card.Body>
-                        <Card.Title>Card title</Card.Title>
-                        <Card.Text>
-                          <small className="text-muted">
-                            Last updated 3 mins ago
-                          </small>
-                        </Card.Text>
-                      </Card.Body>
-                    </Card>
+                  <Button color="secondary">EVENT TITLE</Button>
+                    <Button color="secondary">EVENT TITLE</Button>
                   </div>
                 </td>
                 <td>
                   <div className="each-col">
-                  <Card>
-                      <Card.Body>
-                        <Card.Title>Card title</Card.Title>
-                        <Card.Text>
-                          <small className="text-muted">
-                            Last updated 3 mins ago
-                          </small>
-                        </Card.Text>
-                      </Card.Body>
-                    </Card>
+                  <Button color="secondary">EVENT TITLE</Button>
+                    <Button color="secondary">EVENT TITLE</Button>
                   </div>
                 </td>
                 <td>
                   <div className="each-col">
-                  <Card>
-                      <Card.Body>
-                        <Card.Title>Card title</Card.Title>
-                        <Card.Text>
-                          <small className="text-muted">
-                            Last updated 3 mins ago
-                          </small>
-                        </Card.Text>
-                      </Card.Body>
-                    </Card>
+                  <Button color="secondary">EVENT TITLE</Button>
+                    <Button color="secondary">EVENT TITLE</Button>
                   </div>
                 </td>
                 <td> </td>
                 <td>
                   <div className="each-col">
-                  <Card>
-                      <Card.Body>
-                        <Card.Title>Card title</Card.Title>
-                        <Card.Text>
-                          <small className="text-muted">
-                            Last updated 3 mins ago
-                          </small>
-                        </Card.Text>
-                      </Card.Body>
-                    </Card>
+                  <Button color="secondary">EVENT TITLE</Button>
+                    <Button color="secondary">EVENT TITLE</Button>
                   </div>
                 </td>
                 <td>
                   <div className="each-col">
-                  <Card>
-                      <Card.Body>
-                        <Card.Title>Card title</Card.Title>
-                        <Card.Text>
-                          <small className="text-muted">
-                            Last updated 3 mins ago
-                          </small>
-                        </Card.Text>
-                      </Card.Body>
-                    </Card>
+                  <Button color="secondary">EVENT TITLE</Button>
+                    <Button color="secondary">EVENT TITLE</Button>
                   </div>
                 </td>
                 <td>
                   <div className="each-col">
-                  <Card>
-                      <Card.Body>
-                        <Card.Title>Card title</Card.Title>
-                        <Card.Text>
-                          <small className="text-muted">
-                            Last updated 3 mins ago
-                          </small>
-                        </Card.Text>
-                      </Card.Body>
-                    </Card>
+                  <Button color="secondary">EVENT TITLE</Button>
+                    <Button color="secondary">EVENT TITLE</Button>
                   </div>
                 </td>
                 <td>
                   <div className="each-col">
-                  <Card>
-                      <Card.Body>
-                        <Card.Title>Card title</Card.Title>
-                        <Card.Text>
-                          <small className="text-muted">
-                            Last updated 3 mins ago
-                          </small>
-                        </Card.Text>
-                      </Card.Body>
-                    </Card>
+                  <Button color="secondary">EVENT TITLE</Button>
+                    <Button color="secondary">EVENT TITLE</Button>
                   </div>
                 </td>
                 <td>
                   <div className="each-col">
-                  <Card>
-                      <Card.Body>
-                        <Card.Title>Card title</Card.Title>
-                        <Card.Text>
-                          <small className="text-muted">
-                            Last updated 3 mins ago
-                          </small>
-                        </Card.Text>
-                      </Card.Body>
-                    </Card>
+                  <Button color="secondary">EVENT TITLE</Button>
+                    <Button color="secondary">EVENT TITLE</Button>
                   </div>
                 </td>
                 <td>
                   <div className="each-col">
-                  <Card>
-                      <Card.Body>
-                        <Card.Title>Card title</Card.Title>
-                        <Card.Text>
-                          <small className="text-muted">
-                            Last updated 3 mins ago
-                          </small>
-                        </Card.Text>
-                      </Card.Body>
-                    </Card>
+                  <Button color="secondary">EVENT TITLE</Button>
+                    <Button color="secondary">EVENT TITLE</Button>
                   </div>
                 </td>
                 <td>
                   <div className="each-col">
-                  <Card className="each-card">
-                      <Card.Body>
-                        <Card.Title>Card title</Card.Title>
-                        <Card.Text>
-                          <small className="text-muted">
-                            Last updated 3 mins ago
-                          </small>
-                        </Card.Text>
-                      </Card.Body>
-                    </Card>
+                  <Button color="secondary">EVENT TITLE</Button>
+                    <Button color="secondary">EVENT TITLE</Button>
                   </div>
                 </td>
               </tr>

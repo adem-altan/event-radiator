@@ -1,5 +1,12 @@
-import React from 'react';
-import { Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, NavLink } from 'reactstrap';
+import React from "react";
+import {
+  Collapse,
+  Navbar,
+  NavbarToggler,
+  Nav
+} from "reactstrap";
+import { Switch, Route } from "react-router-dom";
+import AddAnEvent from "./AddAnEv";
 
 export default class Navigation extends React.Component {
   constructor(props) {
@@ -23,9 +30,9 @@ export default class Navigation extends React.Component {
           <NavbarToggler onClick={this.toggleNavbar} className="mr-2" />
           <Collapse isOpen={!this.state.collapsed} navbar>
             <Nav navbar>
-              <NavItem>
-                <NavLink href="/components/">Add an Event</NavLink>
-              </NavItem>
+              <Switch>
+                <Route path="/" component={AddAnEvent} />
+              </Switch>
             </Nav>
           </Collapse>
         </Navbar>

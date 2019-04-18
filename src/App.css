@@ -13,8 +13,8 @@ html body {
 }
 
 html .container {
-  margin-top: 5%;
-  margin-right: 5%;
+  margin-top: 2%;
+  margin-right: 2%;
   max-width: 95%;
 }
 
@@ -34,3 +34,29 @@ html .container {
   margin-bottom: -50%;
 }
 
+.add-event {
+  max-width: 25%;
+  margin: auto;
+}
+
+.radio-button-left {
+  float: left;
+  margin-left: 5rem;
+}
+.radio-button-right {
+  margin-left: 1rem;
+}
+
+.submit-button {
+  margin-top: 1rem;
+  float: left;
+}
+
+html .MuiIcon-root-126 {
+  width: 3em;
+  height: 1.5em;
+}
+
+html .material-icons {
+  line-height: 1.5;
+}
