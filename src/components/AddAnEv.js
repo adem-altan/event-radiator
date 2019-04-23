@@ -14,34 +14,49 @@ import Button from "@material-ui/core/Button";
 import Icon from "@material-ui/core/Icon";
 import Divider from "@material-ui/core/Divider";
 import TextField from "@material-ui/core/TextField";
-
+import { connect } from "react-redux";
+import { addEvent } from "../store/actions/eventActions";
 class AddAnEv extends Component {
   constructor(props) {
     super(props);
     this.state = {
       name: "",
-      loc: "Readify",
-      dateAndTime: "",
+      location: "Readify",
+      date: "",
+      time: "",
+      dd: "",
+      mm: "",
+      yyyy: "",
       loading: false,
     };
     
   }
   handleLocationChange = event => {
-    this.setState({ loc: event.target.value });
+    this.setState({ location: event.target.value });
     
   };
   handleNameChange = event => {
     this.setState({ name: event.target.value });
-    console.log(event.target.value);
+    
   }
   handleDateChange = event => {
-    this.setState({ dateAndTime: event.target.value });
+    //caprute date and time
+    var dateAndTime = event.target.value;
+    //split date and time
+    dateAndTime = dateAndTime.split('T');
+    //split date 
+    var date = dateAndTime[0].split('-');
+
+    this.setState({ date: dateAndTime[0] });
+    this.setState({ time: dateAndTime[1] });
+    this.setState({ dd: date[2] });
+    this.setState({ mm: date[1] });
+    this.setState({ yyyy: date[0] });
   }
 
   handleSubmit = (event) => {
-    console.log('works...');
-    console.log(this.state);
     this.setState({loading: true });
+    this.props.addEvent(this.state);
   };
   render() {
     return (
@@ -69,7 +84,7 @@ class AddAnEv extends Component {
             </FormGroup>
             <FormGroup className="radio-button-left">
               <Radio
-                checked={this.state.loc === "Readify"}
+                checked={this.state.location === "Readify"}
                 onChange={this.handleLocationChange}
                 value='Readify'
                 name="radio-button"
@@ -79,7 +94,7 @@ class AddAnEv extends Component {
             </FormGroup>
             <FormGroup className="radio-button-right">
               <Radio
-                checked={this.state.loc === "Elsewhere"}
+                checked={this.state.location === "Elsewhere"}
                 onChange={this.handleLocationChange}
                 value='Elsewhere'
                 name="radio-button"
@@ -89,13 +104,20 @@ class AddAnEv extends Component {
             </FormGroup>
             <Divider />
             <FormGroup className="submit-button">
-              <Button variant="contained" color="primary" onClick={this.handleSubmit}>
+              { !this.state.loading && <Button variant="contained" color="primary" onClick={this.handleSubmit}>
                 Add
                 <Icon>
                   send
                   { this.state.loading && <div class="spinner-grow text-warning" role="status"></div> }
                 </Icon>
               </Button>
+              }
+              { (this.state.loading === true) && <Button variant="contained" color="primary">
+                <Icon> 
+                  <div className="spinner-grow text-warning" role="status"></div> 
+                </Icon>
+              </Button>
+              }
             </FormGroup>
           </Form>
         </Container>
@@ -105,4 +127,10 @@ class AddAnEv extends Component {
   }
 }
 
-export default AddAnEv;
+const mapDispatchToProps = (dispatch) => {
+  return {
+    addEvent: (event) => dispatch(addEvent(event))
+  }
+}
+
+export default connect(null, mapDispatchToProps)(AddAnEv);
