@@ -46,7 +46,6 @@ class AddAnEv extends Component {
     dateAndTime = dateAndTime.split('T');
     //split date 
     var date = dateAndTime[0].split('-');
-
     this.setState({ date: dateAndTime[0] });
     this.setState({ time: dateAndTime[1] });
     this.setState({ dd: date[2] });

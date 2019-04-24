@@ -61,6 +61,10 @@ html .material-icons {
   line-height: 1.5;
 }
 
-.each-col button {
-  margin-top: 1em;
+ .each-col button {
+  display: table;
+  margin: 1rem auto
+}
+.alert {
+  max-width: 200px;
 }
