@@ -13,6 +13,8 @@ class App extends Component {
     this.state = {
       today: null,
       month: null,
+      first: null,
+      last: null,
       thisMonday: null,
       nextMonday: null,
       readifyMonday: [],
@@ -36,7 +38,8 @@ class App extends Component {
     var first = curr.getDate() - curr.getDay();
     var month = curr.getMonth() + 1;
     first = first + 1;
-    var last = first + 7;
+    var last = first + 6;
+    this.setState({first: first, last: last});
     var thisMonday = new Date(curr.setDate(first)).toDateString();
     var nextMonday = new Date(curr.setDate(last)).toDateString();
     this.setState({
@@ -58,8 +61,17 @@ class App extends Component {
       "Friday",
       "Saturday"
     ];
-    events.events.map(event => {
-      if (event.location === "Readify") {
+    //filter out the events which are not this month
+    const monthlyFilteredEvents = events.events.filter(event => {
+      return event.mm == this.state.month;
+    });
+    //filter out events which are not this week
+    const weeklyFilteredEvents = monthlyFilteredEvents.filter(event => {
+      return (event.dd >= this.state.first && event.dd <= this.state.last)
+    })
+    //list events by location
+    weeklyFilteredEvents.map(event => {
+      if (event.location === "Readify" ) {
         var date = new Date(event.date);
         var dayName = dayNames[date.getDay()];
         switch (dayName) {
@@ -79,9 +91,9 @@ class App extends Component {
             return this.state.readifySunday.push(event);
         }
       }
-      if (event.location === "Elsewhere") {
-        var date = new Date(event.date);
-        var dayName = dayNames[date.getDay()];
+      if (event.location === "Elsewhere" ) {
+         date = new Date(event.date);
+         dayName = dayNames[date.getDay()];
         switch (dayName) {
           case "Monday":
             return this.state.elsewhereMonday.push(event);
@@ -100,8 +112,6 @@ class App extends Component {
         }
       }
     });
-    console.log(this.state.readifyList);
-    console.log(this.state.elsewhereList);
   }
   render() {
     const { events } = this.props;
@@ -273,7 +283,7 @@ class App extends Component {
   }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
     events: state.firestore.ordered.events
   };

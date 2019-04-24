@@ -16,6 +16,9 @@ import Divider from "@material-ui/core/Divider";
 import TextField from "@material-ui/core/TextField";
 import { connect } from "react-redux";
 import { addEvent } from "../store/actions/eventActions";
+import SelectInput from "@material-ui/core/Select/SelectInput";
+import { delay } from "q";
+
 class AddAnEv extends Component {
   constructor(props) {
     super(props);
@@ -29,15 +32,12 @@ class AddAnEv extends Component {
       yyyy: "",
       loading: false,
     };
-    
   }
   handleLocationChange = event => {
     this.setState({ location: event.target.value });
-    
   };
   handleNameChange = event => {
     this.setState({ name: event.target.value });
-    
   }
   handleDateChange = event => {
     //caprute date and time
@@ -56,6 +56,7 @@ class AddAnEv extends Component {
   handleSubmit = (event) => {
     this.setState({loading: true });
     this.props.addEvent(this.state);
+    window.location.reload();
   };
   render() {
     return (

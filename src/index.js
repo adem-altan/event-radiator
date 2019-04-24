@@ -25,6 +25,3 @@ ReactDOM.render(<Provider store={ store }><BrowserRouter><App /></BrowserRouter>
 // Learn more about service workers: https://bit.ly/CRA-PWA
 serviceWorker.unregister();
 
-
-// ReactDOM.render((<BrowserRouter><App /></BrowserRouter>
-//     ), document.getElementById('root'));
