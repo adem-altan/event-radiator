@@ -68,6 +68,14 @@ html .material-icons {
 .alert {
   max-width: 200px;
 }
-.jss126 {
+html .jss126 {
   height: 1.5em;
+}
+
+.week-info button {
+  padding: .1em;
+}
+.week-info {
+  font-size: 15px;
+  display: inline-flex;
 }

@@ -14,7 +14,6 @@ class App extends Component {
       today: null,
       month: null,
       first: null,
-      last: null,
       thisMonday: null,
       nextMonday: null,
       readifyMonday: [],
@@ -35,13 +34,11 @@ class App extends Component {
   }
   componentDidMount() {
     var curr = new Date();
-    var first = curr.getDate() - curr.getDay();
+    var first = (curr.getDate() - curr.getDay())+1;
     var month = curr.getMonth() + 1;
-    first = first + 1;
-    var last = first + 6;
-    this.setState({first: first, last: last});
+    this.setState({first: first});
     var thisMonday = new Date(curr.setDate(first)).toDateString();
-    var nextMonday = new Date(curr.setDate(last)).toDateString();
+    var nextMonday = new Date(curr.setDate(first+6)).toDateString();
     this.setState({
       today: first,
       month: month,
@@ -61,13 +58,57 @@ class App extends Component {
       "Friday",
       "Saturday"
     ];
+    //empty the arrays so events won't be duplicated in the view
+    //array.pop is the fastest method in our case
+    while(this.state.readifyMonday.length) {
+      this.state.readifyMonday.pop();
+    }
+    while(this.state.readifyTuesday.length) {
+      this.state.readifyTuesday.pop();
+    }
+    while(this.state.readifyWednesday.length) {
+      this.state.readifyWednesday.pop();
+    }
+    while(this.state.readifyThursday.length) {
+      this.state.readifyThursday.pop();
+    }
+    while(this.state.readifyFriday.length) {
+      this.state.readifyFriday.pop();
+    }
+    while(this.state.readifySaturday.length) {
+      this.state.readifySaturday.pop();
+    }
+    while(this.state.readifySunday.length) {
+      this.state.readifySunday.pop();
+    }
+    while(this.state.elsewhereMonday.length) {
+      this.state.elsewhereMonday.pop();
+    }
+    while(this.state.elsewhereTuesday.length) {
+      this.state.elsewhereTuesday.pop();
+    }
+    while(this.state.elsewhereWednesday.length) {
+      this.state.elsewhereWednesday.pop();
+    }
+    while(this.state.elsewhereThursday.length) {
+      this.state.elsewhereThursday.pop();
+    }
+    while(this.state.elsewhereFriday.length) {
+      this.state.elsewhereFriday.pop();
+    }
+    while(this.state.elsewhereSaturday.length) {
+      this.state.elsewhereSaturday.pop();
+    }
+    while(this.state.elsewhereSunday.length) {
+      this.state.elsewhereSunday.pop();
+    }
     //filter out the events which are not this month
     const monthlyFilteredEvents = events.events.filter(event => {
       return event.mm == this.state.month;
     });
     //filter out events which are not this week
     const weeklyFilteredEvents = monthlyFilteredEvents.filter(event => {
-      return (event.dd >= this.state.first && event.dd <= this.state.last)
+      return (event.dd >= this.state.first && event.dd <= this.state.first+6)
     })
     //list events by location
     weeklyFilteredEvents.map(event => {
@@ -113,10 +154,34 @@ class App extends Component {
       }
     });
   }
+  lastWeek = () => {
+    var thisMonday = new Date(this.state.thisMonday);
+    thisMonday = new Date(thisMonday.setDate(thisMonday.getDate()-7));
+    var first = (thisMonday.getDate() - thisMonday.getDay())+1;
+    var month = thisMonday.getMonth()+1;
+    thisMonday = thisMonday.toDateString();
+    this.setState({
+      thisMonday: thisMonday,
+      month: month,
+      first: first
+    });
+  }
+  nextWeek = () => {
+    var thisMonday = new Date(this.state.thisMonday);
+    thisMonday = new Date(thisMonday.setDate(thisMonday.getDate()+7));
+    var first = (thisMonday.getDate() - thisMonday.getDay())+1;
+    var month = thisMonday.getMonth()+1;
+    thisMonday = thisMonday.toDateString();
+    this.setState({
+      thisMonday: thisMonday,
+      month: month,
+      first: first
+    });
+  }
   render() {
-    const { events } = this.props;
-    if ({ events }.events !== undefined) {
-      this.sortByLocation({ events });
+    const  events = this.props;
+    if ( events.events !== undefined) {
+      this.sortByLocation( events);
     }
 
     return (
@@ -127,7 +192,11 @@ class App extends Component {
             <thead>
               <tr>
                 <th>
-                  <Alert color="info">{this.state.thisMonday}</Alert>
+                  <Alert className="week-info" color="info">
+                    <Button className="material-icons" size="lg" color="" onClick={this.lastWeek}>arrow_left </Button>
+                    {this.state.thisMonday}
+                    <Button className="material-icons" size="lg" color="" onClick={this.nextWeek}>arrow_right</Button>
+                  </Alert>
                 </th>
                 <th>Monday</th>
                 <th>Tuesday</th>

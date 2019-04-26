@@ -56,7 +56,7 @@ class AddAnEv extends Component {
   handleSubmit = (event) => {
     this.setState({loading: true });
     this.props.addEvent(this.state);
-    window.location.reload();
+    //window.location.reload();
   };
   render() {
     return (
