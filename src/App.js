@@ -58,7 +58,7 @@ class App extends Component {
       "Friday",
       "Saturday"
     ];
-    //empty the arrays so events won't be duplicated in the view
+    //empty the arrays so the events won't be duplicated in the view
     //array.pop is the fastest method in our case
     while(this.state.readifyMonday.length) {
       this.state.readifyMonday.pop();
@@ -108,8 +108,10 @@ class App extends Component {
     });
     //filter out events which are not this week
     const weeklyFilteredEvents = monthlyFilteredEvents.filter(event => {
-      return (event.dd >= this.state.first && event.dd <= this.state.first+6)
-    })
+      //debugger
+      var last = (this.state.first+6)%30;
+      return ((event.dd >= this.state.first) && (event.dd <= last))
+    });
     //list events by location
     weeklyFilteredEvents.map(event => {
       if (event.location === "Readify" ) {
