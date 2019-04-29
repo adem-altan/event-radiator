@@ -47,8 +47,9 @@ class App extends Component {
     });
   }
 
-  //seperate readify and other location events
+  //this function seperates Readify and other location events
   sortByLocation(events) {
+    var last = (this.state.first+6)%30;
     var dayNames = [
       "Sunday",
       "Monday",
@@ -104,13 +105,22 @@ class App extends Component {
     }
     //filter out the events which are not this month
     const monthlyFilteredEvents = events.events.filter(event => {
-      return event.mm == this.state.month;
+      return (event.mm == this.state.month || event.mm == this.state.month+1 || event.mm == this.state.month-1);
     });
     //filter out events which are not this week
     const weeklyFilteredEvents = monthlyFilteredEvents.filter(event => {
-      //debugger
-      var last = (this.state.first+6)%30;
-      return ((event.dd >= this.state.first) && (event.dd <= last))
+      //limit range to 7 days if the event is not from this month
+      if( event.mm != this.state.month && event.dd > 7) {
+        return false;
+      } 
+      //Event is within the first week
+      //therefore it will be in the next month's event
+      if((new Date(this.state.thisMonday).getDate() + 7 )% 30 < 7) {
+        return ((event.dd >= this.state.first) || (event.dd <= last));
+      } else { 
+        //only the events within the current week will be considered
+        return ((event.dd >= this.state.first) && (event.dd <= last));
+      }
     });
     //list events by location
     weeklyFilteredEvents.map(event => {
@@ -156,6 +166,8 @@ class App extends Component {
       }
     });
   }
+  //this function gets called when left arrow is clicked
+  //user can see last weeks' events
   lastWeek = () => {
     var thisMonday = new Date(this.state.thisMonday);
     thisMonday = new Date(thisMonday.setDate(thisMonday.getDate()-7));
@@ -168,6 +180,8 @@ class App extends Component {
       first: first
     });
   }
+  //this function gets called when right arrow is clicked
+  //user can see last weeks' events
   nextWeek = () => {
     var thisMonday = new Date(this.state.thisMonday);
     thisMonday = new Date(thisMonday.setDate(thisMonday.getDate()+7));
@@ -185,7 +199,6 @@ class App extends Component {
     if ( events.events !== undefined) {
       this.sortByLocation( events);
     }
-
     return (
       <div className="App">
         <Navigation />
@@ -216,11 +229,11 @@ class App extends Component {
                 </th>
                 <td>
                   <div className="each-col" id="monday">
-                    {this.state.readifyMonday.map(event => (
+                    {this.state.readifyMonday.map(event =>
                       <Button color="secondary" key={event.id}>
                         {event.name}
                       </Button>
-                    ))}
+                    )}
                   </div>
                 </td>
                 <td>

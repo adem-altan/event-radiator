@@ -87,8 +87,7 @@ form {
 html .form-group {
   margin-bottom: 0px;
 }
-table td 
-{
+table td {
   table-layout:fixed;
   width:10%;
   overflow:hidden;

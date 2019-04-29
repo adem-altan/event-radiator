@@ -2,10 +2,6 @@ import React, { Component } from "react";
 import {
   Form,
   FormGroup,
-  Label,
-  Input,
-  FormFeedback,
-  FormText,
   Container
 } from "reactstrap";
 import Radio from "@material-ui/core/Radio";
@@ -16,8 +12,7 @@ import Divider from "@material-ui/core/Divider";
 import TextField from "@material-ui/core/TextField";
 import { connect } from "react-redux";
 import { addEvent } from "../store/actions/eventActions";
-import SelectInput from "@material-ui/core/Select/SelectInput";
-import { delay } from "q";
+
 
 class AddAnEv extends Component {
   constructor(props) {
