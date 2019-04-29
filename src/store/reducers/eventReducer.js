@@ -7,7 +7,7 @@ const eventReducer = (state = initialState, action) => {
     case "ADD_EVENT":
       return {
         //...state,
-        events: action.event
+        events: state.events.concat([action.event])
       };
     case "ADD_EVENT_ERROR":
       console.log("add event error", action.err);

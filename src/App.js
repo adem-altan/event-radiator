@@ -7,6 +7,15 @@ import { connect } from "react-redux";
 import { firestoreConnect } from "react-redux-firebase";
 import { compose } from "redux";
 
+const DAYS = [
+  "Monday",
+  "Tuesday",
+  "Wednesday",
+  "Thursday",
+  "Friday",
+  "Saturday",
+  "Sunday"
+];
 class App extends Component {
   constructor(props) {
     super(props);
@@ -50,60 +59,23 @@ class App extends Component {
   //this function seperates Readify and other location events
   sortByLocation(events) {
     var last = (this.state.first+6)%30;
-    var dayNames = [
-      "Sunday",
-      "Monday",
-      "Tuesday",
-      "Wednesday",
-      "Thursday",
-      "Friday",
-      "Saturday"
-    ];
+
     //empty the arrays so the events won't be duplicated in the view
-    //array.pop is the fastest method in our case
-    while(this.state.readifyMonday.length) {
-      this.state.readifyMonday.pop();
-    }
-    while(this.state.readifyTuesday.length) {
-      this.state.readifyTuesday.pop();
-    }
-    while(this.state.readifyWednesday.length) {
-      this.state.readifyWednesday.pop();
-    }
-    while(this.state.readifyThursday.length) {
-      this.state.readifyThursday.pop();
-    }
-    while(this.state.readifyFriday.length) {
-      this.state.readifyFriday.pop();
-    }
-    while(this.state.readifySaturday.length) {
-      this.state.readifySaturday.pop();
-    }
-    while(this.state.readifySunday.length) {
-      this.state.readifySunday.pop();
-    }
-    while(this.state.elsewhereMonday.length) {
-      this.state.elsewhereMonday.pop();
-    }
-    while(this.state.elsewhereTuesday.length) {
-      this.state.elsewhereTuesday.pop();
-    }
-    while(this.state.elsewhereWednesday.length) {
-      this.state.elsewhereWednesday.pop();
-    }
-    while(this.state.elsewhereThursday.length) {
-      this.state.elsewhereThursday.pop();
-    }
-    while(this.state.elsewhereFriday.length) {
-      this.state.elsewhereFriday.pop();
-    }
-    while(this.state.elsewhereSaturday.length) {
-      this.state.elsewhereSaturday.pop();
-    }
-    while(this.state.elsewhereSunday.length) {
-      this.state.elsewhereSunday.pop();
-    }
-    //filter out the events which are not this month
+    this.state.readifyMonday = [];
+    this.state.readifyTuesday = [];
+    this.state.readifyWednesday = [];
+    this.state.readifyThursday = [];
+    this.state.readifyFriday = [];
+    this.state.readifySaturday = [];
+    this.state.readifySunday = [];
+    this.state.elsewhereMonday = [];
+    this.state.elsewhereTuesday = [];
+    this.state.elsewhereWednesday = [];
+    this.state.elsewhereThursday = [];
+    this.state.elsewhereFriday = [];
+    this.state.elsewhereSaturday = [];
+    this.state.elsewhereSunday = [];
+    
     const monthlyFilteredEvents = events.events.filter(event => {
       return (event.mm == this.state.month || event.mm == this.state.month+1 || event.mm == this.state.month-1);
     });
@@ -126,7 +98,7 @@ class App extends Component {
     weeklyFilteredEvents.map(event => {
       if (event.location === "Readify" ) {
         var date = new Date(event.date);
-        var dayName = dayNames[date.getDay()];
+        var dayName = DAYS[date.getDay()-1];
         switch (dayName) {
           case "Monday":
             return this.state.readifyMonday.push(event);
@@ -146,7 +118,7 @@ class App extends Component {
       }
       if (event.location === "Elsewhere" ) {
          date = new Date(event.date);
-         dayName = dayNames[date.getDay()];
+         dayName = DAYS[date.getDay()];
         switch (dayName) {
           case "Monday":
             return this.state.elsewhereMonday.push(event);
@@ -213,13 +185,11 @@ class App extends Component {
                     <Button className="material-icons" size="lg" color="" onClick={this.nextWeek}>arrow_right</Button>
                   </Alert>
                 </th>
-                <th>Monday</th>
-                <th>Tuesday</th>
-                <th>Wednesday</th>
-                <th>Thursday</th>
-                <th>Friday</th>
-                <th>Saturday</th>
-                <th>Sunday</th>
+                {DAYS.map(day => {
+                  return(
+                    <th>{day}</th>
+                  )
+                })}
               </tr>
             </thead>
             <tbody>
