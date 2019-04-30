@@ -6,6 +6,7 @@ import Navigation from "./components/Navigation";
 import { connect } from "react-redux";
 import { firestoreConnect } from "react-redux-firebase";
 import { compose } from "redux";
+import uuidv1 from  'uuid/v1';
 
 const DAYS = [
   "Monday",
@@ -108,12 +109,30 @@ class App extends Component {
       first: first
     });
   };
-  getEventDay = event => {
-    var date = new Date(event.date).getDay()-1;
-    var day = DAYS[date];
-    day == undefined ? day = 'Sunday' : day = day;
-    return day;
+  getEventDay = (event) => {
+    //debugger
+    var eventDate = new Date(event.date);
+    var weekBeginning = new Date(this.state.thisMonday);
+    var weekEnding = new Date();
+    weekEnding.setDate(weekBeginning.getDate()+6);
+    weekEnding.setMonth(weekEnding.getMonth()+1);
+    
+    //eleminate events outside of the week
+    if((eventDate >= weekBeginning) && (eventDate <= weekEnding)) {
+      var date = new Date(event.date).getDay()-1;
+      var day = DAYS[date];
+      day == undefined ? day = 'Sunday' : day = day;
+      return day;
+    } else {
+      console.log('failed');
+      console.log('event date: '+eventDate);
+      console.log('week starts: '+weekBeginning);
+      console.log('week ends: '+weekEnding);
+      return false;
+    }
+    
   };
+
   render() {
     const events = this.props;
     if (events.events !== undefined) {
@@ -163,9 +182,9 @@ class App extends Component {
                       <div className="each-col" id={day}>
                         {this.state.Readify.map(readifyEvent => {
                           return this.getEventDay(readifyEvent) === day ? (
-                            <Button key={readifyEvent.key}>{readifyEvent.name}</Button>
+                            <Button key={readifyEvent.id}>{readifyEvent.name}</Button>
                           ) : (
-                            <div />
+                            <div key={uuidv1()} />
                           );
                         })}
                       </div>
@@ -183,9 +202,9 @@ class App extends Component {
                       <div className="each-col" id={day}>
                         {this.state.Elsewhere.map(elsewhereEvent => {
                           return this.getEventDay(elsewhereEvent) === day ? (
-                            <Button key={elsewhereEvent.key}>{elsewhereEvent.name}</Button>
+                            <Button key={elsewhereEvent.id}>{elsewhereEvent.name}</Button>
                           ) : (
-                            <div />
+                            <div key={uuidv1()}/>
                           );
                         })}
                       </div>
