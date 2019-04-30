@@ -21,7 +21,6 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      today: null,
       month: null,
       first: null,
       thisMonday: null,
@@ -38,7 +37,6 @@ class App extends Component {
     var thisMonday = new Date(curr.setDate(first)).toDateString();
     var nextMonday = new Date(curr.setDate(first + 6)).toDateString();
     this.setState({
-      today: first,
       month: month,
       thisMonday: thisMonday,
       nextMonday: nextMonday
@@ -110,7 +108,6 @@ class App extends Component {
     });
   };
   getEventDay = (event) => {
-    //debugger
     var eventDate = new Date(event.date);
     var weekBeginning = new Date(this.state.thisMonday);
     var weekEnding = new Date();
@@ -124,13 +121,8 @@ class App extends Component {
       day == undefined ? day = 'Sunday' : day = day;
       return day;
     } else {
-      console.log('failed');
-      console.log('event date: '+eventDate);
-      console.log('week starts: '+weekBeginning);
-      console.log('week ends: '+weekEnding);
       return false;
     }
-    
   };
 
   render() {
