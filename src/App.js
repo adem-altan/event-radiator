@@ -47,7 +47,6 @@ class App extends Component {
   //this function seperates Readify and other location events
   sortByLocation(events) {
     var last = (this.state.first + 6) % 30;
-
     //empty the arrays so the events won't be duplicated in the view
     this.state.Readify = [];
     this.state.Elsewhere = [];
@@ -67,7 +66,7 @@ class App extends Component {
       }
       //Event is within the first week
       //therefore it will be in the next month's event
-      if ((new Date(this.state.thisMonday).getDate() + 7) % 30 < 7) {
+      if (((new Date(this.state.thisMonday).getDate() + 7) % 30 < 7))  {
         return event.dd >= this.state.first || event.dd <= last;
       } else {
         //only the events within the current week will be considered
@@ -110,8 +109,9 @@ class App extends Component {
     });
   };
   getEventDay = event => {
-    var date = new Date(event.date).getDay();
-    var day = DAYS[date-1];
+    var date = new Date(event.date).getDay()-1;
+    var day = DAYS[date];
+    day == undefined ? day = 'Sunday' : day = day;
     return day;
   };
   render() {
