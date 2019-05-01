@@ -18,21 +18,9 @@ steps:
 - script: |
     npm install
     npm run build
-    npm install firebase-tools
     
   displayName: 'npm install and build'
 
-- script: firebase deploy --output $(Build.ArtifactStagingDirectory)
-  displayName: 'firebase deploy'
-
-- task: CopyFiles@2
-  inputs:
-    SourceFolder: build
-    Contents: |
-      **/*
-    TargetFolder: '$(Build.ArtifactStagingDirectory)'
-
-- task: PublishBuildArtifacts@1
-  inputs: 
-    pathToPublish: '$(Build.ArtifactStagingDirectory)'
-    artifactName: 'artifacts'
+- script:
+    npm install firebase-tools
+  displayName: 'firebase tools install'
