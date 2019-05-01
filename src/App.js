@@ -17,6 +17,7 @@ const DAYS = [
   "Saturday",
   "Sunday"
 ];
+
 class App extends Component {
   constructor(props) {
     super(props);
@@ -32,10 +33,11 @@ class App extends Component {
   componentDidMount() {
     var curr = new Date();
     var first = curr.getDate() - curr.getDay() + 1;
-    var month = curr.getMonth() + 1;
+    var month = curr.getMonth();
     this.setState({ first: first });
     var thisMonday = new Date(curr.setDate(first)).toDateString();
     var nextMonday = new Date(curr.setDate(first + 6)).toDateString();
+    console.log(month)
     this.setState({
       month: month,
       thisMonday: thisMonday,
@@ -113,7 +115,6 @@ class App extends Component {
     var weekEnding = new Date();
     weekEnding.setDate(weekBeginning.getDate()+6);
     weekEnding.setMonth(weekEnding.getMonth()+1);
-    
     //eleminate events outside of the week
     if((eventDate >= weekBeginning) && (eventDate <= weekEnding)) {
       var date = new Date(event.date).getDay()-1;
