@@ -37,7 +37,6 @@ class App extends Component {
     this.setState({ first: first });
     var thisMonday = new Date(curr.setDate(first)).toDateString();
     var nextMonday = new Date(curr.setDate(first + 6)).toDateString();
-    console.log(month)
     this.setState({
       month: month,
       thisMonday: thisMonday,
@@ -62,7 +61,7 @@ class App extends Component {
     //filter out events which are not this week
     const weeklyFilteredEvents = monthlyFilteredEvents.filter(event => {
       //limit range to 7 days if the event is not from this month
-      if (event.mm != this.state.month && event.dd > 7) {
+      if (event.mm != this.state.month && event.dd >= 5) {
         return false;
       }
       //Event is within the first week
