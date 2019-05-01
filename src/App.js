@@ -176,7 +176,7 @@ class App extends Component {
                           return this.getEventDay(readifyEvent) === day ? (
                             <Button key={readifyEvent.id}>{readifyEvent.name}</Button>
                           ) : (
-                            <div key={uuidv1()} />
+                            null
                           );
                         })}
                       </div>
