@@ -6,7 +6,8 @@ import Navigation from "./components/Navigation";
 import { connect } from "react-redux";
 import { firestoreConnect } from "react-redux-firebase";
 import { compose } from "redux";
-import uuidv1 from  'uuid/v1';
+import Event from './components/Event';
+
 
 const DAYS = [
   "Monday",
@@ -27,7 +28,9 @@ class App extends Component {
       thisMonday: null,
       nextMonday: null,
       Readify: [],
-      Elsewhere: []
+      Elsewhere: [],
+      singleEvent: null,
+      open: false
     };
   }
   componentDidMount() {
@@ -124,7 +127,9 @@ class App extends Component {
       return false;
     }
   };
-
+  showEvent = (event) => {
+    this.setState({singleEvent: event, open: true });
+  }
   render() {
     const events = this.props;
     if (events.events !== undefined) {
@@ -174,7 +179,7 @@ class App extends Component {
                       <div className="each-col" id={day}>
                         {this.state.Readify.map(readifyEvent => {
                           return this.getEventDay(readifyEvent) === day ? (
-                            <Button key={readifyEvent.id}>{readifyEvent.name}</Button>
+                            <Alert key={readifyEvent.id}><Event event={readifyEvent}/>{readifyEvent.name}</Alert>
                           ) : (
                             null
                           );
@@ -194,9 +199,9 @@ class App extends Component {
                       <div className="each-col" id={day}>
                         {this.state.Elsewhere.map(elsewhereEvent => {
                           return this.getEventDay(elsewhereEvent) === day ? (
-                            <Button key={elsewhereEvent.id}>{elsewhereEvent.name}</Button>
+                            <Alert key={elsewhereEvent.id}><Event event={elsewhereEvent}/>{elsewhereEvent.name}</Alert>
                           ) : (
-                            <div key={uuidv1()}/>
+                            null
                           );
                         })}
                       </div>

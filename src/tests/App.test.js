@@ -1,9 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from '../App';
-import { ExpansionPanelActions } from '@material-ui/core';
-import { create } from 'react-test-renderer';
-import Navigation from '../components/AddAnEv';
 
 import { createStore, applyMiddleware, compose } from 'redux';
 import rootReducer from '../store/reducers/rootReducer';
@@ -27,10 +24,3 @@ it('app component renders without crashing', () => {
   ReactDOM.render(<Provider store={ store }><BrowserRouter><App /></BrowserRouter></Provider>, div);
   ReactDOM.unmountComponentAtNode(div);
 });
-
-
-// describe('Navigation test', () => {
-//   it('testing navigation', () => {
-//     const component = create(<Navigation store={ store }/>);
-//   });
-// });

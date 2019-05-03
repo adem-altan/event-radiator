@@ -77,6 +77,11 @@ html .jss126 {
   padding: .1em;
 }
 .week-info {
+  padding: .1em;
+  display: inline-flex;
+  float: left;
+}
+.event-detail {
   font-size: 15px;
   display: inline-flex;
   float: left;
@@ -92,4 +97,19 @@ table td {
   width:10%;
   overflow:hidden;
   word-wrap:break-word;
+}
+
+.event-detail {
+  font-size: 1rem;
+  float: left;
+  margin: 0px;
+  text-align: left;
+  position: absolute;
+  right: 0;
+}
+
+.event-detail button {
+  margin: 0;
+  margin-left: 50%;
+  line-height: .5px;
 }
