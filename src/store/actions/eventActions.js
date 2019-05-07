@@ -26,7 +26,10 @@ export const editEvent = (event) => {
     return (dispatch, getState, { getFirebase, getFirestore }) => {
         const firestore = getFirestore();
         firestore.collection('events').doc(event.id).update({
-            name: event.name
+            name: event.name,
+            date: event.date,
+            time: event.time,
+            location: event.location
         }).then(() => {
             dispatch({ type: 'EDIT_EVENT', event });
         }).catch((err) => {
