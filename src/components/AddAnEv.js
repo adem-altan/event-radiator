@@ -12,15 +12,22 @@ import Divider from "@material-ui/core/Divider";
 import TextField from "@material-ui/core/TextField";
 import { connect } from "react-redux";
 import { addEvent } from "../store/actions/eventActions";
-
+import './AddAnEv.css';
 
 class AddAnEv extends Component {
   constructor(props) {
     super(props);
+    var today = new Date();
+    var dd = String(today.getDate()).padStart(2, '0');
+    var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+    var yyyy = today.getFullYear();
+
+    today = yyyy + '-' + mm + '-' + dd + 'T17:00';
+
     this.state = {
       name: "",
       location: "Readify",
-      date: "",
+      date: today,
       time: "",
       dd: "",
       mm: "",
@@ -41,6 +48,7 @@ class AddAnEv extends Component {
     dateAndTime = dateAndTime.split('T');
     //split date 
     var date = dateAndTime[0].split('-');
+  
     this.setState({ date: dateAndTime[0] });
     this.setState({ time: dateAndTime[1] });
     this.setState({ dd: date[2] });
@@ -73,7 +81,7 @@ class AddAnEv extends Component {
                 id="datetime-local"
                 label="Date and Time"
                 type="datetime-local"
-                defaultValue="2019-05-24T09:00"
+                defaultValue={this.state.date}//"2019-05-24T09:00"
                 onChange={this.handleDateChange}
               />
             </FormGroup>

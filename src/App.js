@@ -63,7 +63,7 @@ class App extends Component {
     });
     //filter out events which are not this week
     const weeklyFilteredEvents = monthlyFilteredEvents.filter(event => {
-      //limit range to 7 days if the event is not from this month
+      //limit range to 5 days if the event is not from this month
       if (event.mm != this.state.month && event.dd >= 5) {
         return false;
       }

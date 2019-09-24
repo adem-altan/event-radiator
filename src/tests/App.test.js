@@ -24,3 +24,4 @@ it('app component renders without crashing', () => {
   ReactDOM.render(<Provider store={ store }><BrowserRouter><App /></BrowserRouter></Provider>, div);
   ReactDOM.unmountComponentAtNode(div);
 });
+
