@@ -24,3 +24,7 @@ steps:
 - script:
     npm install firebase-tools
   displayName: 'firebase tools install'
+
+- script: 
+    firebase deploy
+  displayName: 'deploy to firebase'
