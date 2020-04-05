@@ -45,10 +45,11 @@ class App extends Component {
       thisMonday: thisMonday,
       nextMonday: nextMonday
     });
+   
   }
 
   //this function seperates Readify and other location events
-  sortByLocation(events) {
+    sortByLocation(events) {
     var last = (this.state.first + 6) % 30;
     //empty the arrays so the events won't be duplicated in the view
     this.state.Readify = [];
@@ -199,7 +200,7 @@ class App extends Component {
                       <div className="each-col" id={day}>
                         {this.state.Elsewhere.map(elsewhereEvent => {
                           return this.getEventDay(elsewhereEvent) === day ? (
-                            <Alert key={elsewhereEvent.id}><Event event={elsewhereEvent}/>{elsewhereEvent.name}</Alert>
+                            <Alert className="individual-event" key={elsewhereEvent.id}><Event event={elsewhereEvent}/>{elsewhereEvent.name}</Alert>
                           ) : (
                             null
                           );

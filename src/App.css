@@ -3,13 +3,13 @@
 }
 
 tbody tr {
-  background-color: #bdc3c7;
+  background-color: #bdbdbd;
 }
 tbody th {
   vertical-align:middle !important;
 }
 html body {
-  background-color: #7598ca;
+  background-color: #b4b1b9;
 }
 
 html .container {
@@ -23,8 +23,13 @@ html .container {
   min-height: 200px;
 }
 
+.individual-event:hover {
+  -moz-box-shadow: 0 0 10px #ccc;
+  -webkit-box-shadow: 0 0 10px #ccc;
+  box-shadow: 0 0 10px rgb(192, 12, 12);
+}
+
 .card {
-  
   flex: 100px 1 0;
   border: solid 1px black;
   border-radius: 5px;
@@ -43,6 +48,7 @@ html .container {
   float: left;
   margin-left: 5rem;
 }
+
 .radio-button-right {
   margin-left: 1rem;
 }
@@ -66,9 +72,11 @@ html .material-icons {
   margin: 1rem auto;
   max-width: 160px;
 }
+
 .alert {
   max-width: 180px;
 }
+
 html .jss126 {
   height: 1.5em;
 }
@@ -76,22 +84,27 @@ html .jss126 {
 .week-info button {
   padding: .1em;
 }
+
 .week-info {
   padding: .1em;
   display: inline-flex;
   float: left;
 }
+
 .event-detail {
   font-size: 15px;
   display: inline-flex;
   float: left;
 }
+
 form {
  float: inherit;
 }
+
 html .form-group {
   margin-bottom: 0px;
 }
+
 table td {
   table-layout:fixed;
   width:10%;
